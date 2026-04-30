@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tifo-yellow: rgb(242,216,118);
+}
