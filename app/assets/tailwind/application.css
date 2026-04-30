@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-tifo-yellow: rgb(242,216,118);
+
+  --font-podkova: "Podkova", serif;
 }
