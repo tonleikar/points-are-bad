@@ -23,3 +23,5 @@ sample_users.each do |attrs|
     user.username = attrs[:username]
   end
 end
+
+puts 'Seed complete'
