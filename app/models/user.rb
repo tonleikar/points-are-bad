@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :league_members, dependent: :destroy
   has_many :leagues, through: :league_members
   has_many :predictions, dependent: :destroy
+
+  # TODO user cannot have offensive name
 end

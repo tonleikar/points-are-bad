@@ -7,6 +7,7 @@ class League < ApplicationRecord
 
   before_create :generate_join_code
 
+  # TODO league cannot have offensive name
   private
 
   def generate_join_code
