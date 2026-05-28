@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_28_141505) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_28_142128) do
   create_table "league_members", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "league_id", null: false
@@ -41,6 +41,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_28_141505) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "predictions", force: :cascade do |t|
+    t.integer "away_prediction"
+    t.datetime "created_at", null: false
+    t.integer "home_prediction"
+    t.integer "match_id", null: false
+    t.integer "points_earned"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["match_id"], name: "index_predictions_on_match_id"
+    t.index ["user_id", "match_id"], name: "index_predictions_on_user_id_and_match_id", unique: true
+    t.index ["user_id"], name: "index_predictions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
@@ -58,4 +71,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_28_141505) do
   add_foreign_key "league_members", "leagues"
   add_foreign_key "league_members", "users"
   add_foreign_key "leagues", "users", column: "creator_id"
+  add_foreign_key "predictions", "matches"
+  add_foreign_key "predictions", "users"
 end
