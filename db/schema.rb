@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_28_134812) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_28_140539) do
+  create_table "league_members", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "league_id", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["league_id"], name: "index_league_members_on_league_id"
+    t.index ["user_id"], name: "index_league_members_on_user_id"
+  end
+
   create_table "leagues", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "creator_id", null: false
@@ -35,5 +44,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_28_134812) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "league_members", "leagues"
+  add_foreign_key "league_members", "users"
   add_foreign_key "leagues", "users", column: "creator_id"
 end

@@ -1,5 +1,7 @@
 class League < ApplicationRecord
   belongs_to :creator, class_name: "User"
+  has_many :league_members
+  has_many :users, through: :league_members
 
   validates :name, presence: true
 
