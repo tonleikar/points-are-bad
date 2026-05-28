@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_28_140539) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_28_141505) do
   create_table "league_members", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "league_id", null: false
@@ -28,6 +28,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_28_140539) do
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_leagues_on_creator_id"
     t.index ["join_code"], name: "index_leagues_on_join_code", unique: true
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "away_score"
+    t.string "away_team", null: false
+    t.datetime "created_at", null: false
+    t.boolean "finished", default: false, null: false
+    t.integer "home_score"
+    t.string "home_team", null: false
+    t.time "kickoff", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

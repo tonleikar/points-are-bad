@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  home_team: MyString
+  away_team: MyString
+  kickoff: 2026-05-28 15:15:05
+  home_score: 1
+  away_score: 1
+  finished: false
+
+two:
+  home_team: MyString
+  away_team: MyString
+  kickoff: 2026-05-28 15:15:05
+  home_score: 1
+  away_score: 1
+  finished: false
