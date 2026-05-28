@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "leagues/index"
+  get "leagues/show"
+  get "leagues/new"
+  get "leagues/create"
   devise_for :users
   get "pages/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -12,5 +16,6 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  # root "posts#index"
+
+  root "leagues#index"
 end

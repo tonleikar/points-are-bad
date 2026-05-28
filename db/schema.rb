@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_01_145730) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_28_134812) do
+  create_table "leagues", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "creator_id", null: false
+    t.string "join_code"
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.index ["creator_id"], name: "index_leagues_on_creator_id"
+    t.index ["join_code"], name: "index_leagues_on_join_code", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", default: "", null: false
@@ -24,4 +34,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_01_145730) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
+
+  add_foreign_key "leagues", "users", column: "creator_id"
 end
